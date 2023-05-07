@@ -24,6 +24,7 @@ jobs:
 
       - name: Build Wasm
         run: |
+          curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
           wasm-pack build --target web
 
       - name: Use Node.js ${{ matrix.node-version }}
