@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content-wrapper {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .controls-container {
+        opacity: 0.2;
+        width: 5rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        display: flex;
+        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        border: 0.2rem solid rgb(244, 244, 5);
+        background: rgba(10, 10, 221, 0.5);
+
+        transition: opacity 0.1s ease;
+      }
+
+      .controls-container:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <div class="controls-container">
+        <span class="game-status">Paused</span>
+        <button class="control" id="playBtn">Play</button>
+        <button class="control" id="pauseBtn" style="display: none">
+          Pause
+        </button>
+      </div>
+      <canvas id="snake-canvas"></canvas>
+    </div>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>
