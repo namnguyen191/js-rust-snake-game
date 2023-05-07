@@ -4,7 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/icons/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>WASM Snake Game</title>
     <style>
       .content-wrapper {
         top: 0;
@@ -39,15 +59,64 @@
       .controls-container:hover {
         opacity: 1;
       }
+
+      .configs-container > #config-btn {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+      }
+
+      .config-panel {
+        max-width: 50vw;
+        max-height: 50vh;
+        width: 20rem;
+        height: 20rem;
+      }
+      .config-inputs-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .confirm-btn {
+        background-color: rgb(9, 9, 227);
+        color: white;
+      }
+
+      .cancel-btn {
+        background-color: rgb(217, 16, 16);
+        color: white;
+      }
     </style>
   </head>
   <body>
     <div class="content-wrapper">
+      <div class="configs-container">
+        <button id="config-btn">Configs</button>
+        <dialog id="config-panel-modal" class="config-panel">
+          <h1>Configuration Panel</h1>
+          <div class="config-inputs-container">
+            <div class="input-container">
+              <label for="world-width">World Width:</label>
+              <input type="number" min="4" max="20" step="1" id="world-width" />
+            </div>
+            <div class="input-container">
+              <label for="game-fps">FPS:</label>
+              <input type="number" min="1" max="120" step="1" id="game-fps" />
+            </div>
+            <button id="confirm-btn" class="confirm-btn">Confirm</button>
+            <button id="cancel-btn" class="cancel-btn">Cancel</button>
+          </div>
+        </dialog>
+      </div>
       <div class="controls-container">
         <span class="game-status">Paused</span>
         <button class="control" id="playBtn">Play</button>
         <button class="control" id="pauseBtn" style="display: none">
           Pause
+        </button>
+        <button class="control" id="resetBtn" style="display: none">
+          Reset
         </button>
       </div>
       <canvas id="snake-canvas"></canvas>
